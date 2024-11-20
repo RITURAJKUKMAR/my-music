@@ -19,26 +19,32 @@ let ending = document.getElementById("ending-time");
 let off = document.getElementById("volume-off");
 let on = document.getElementById("volume-on");
 let count = document.getElementById("count");
-let songNumber = 0;
+let songNumber = -1;
 let result = false;
 starting.innerText = 0.0;
-ending.innerText = (song.duration / 60).toFixed(2);
+
+function loaded() {
+    console.log("loaded");
+    if (songNumber == -1)
+        songNumber = 0;
+    ending.innerText = (song.duration / 60).toFixed(2);
+    starting.innerText = 0.0;
+}
 
 function nextSong() {
     songNumber = (songNumber + 1) % 10;
     song.setAttribute("src", `All Music/${songs[songNumber]}`);
     songName.innerText = songs[songNumber];
     count.innerText = (songNumber + 1) + "/10";
-    starting.innerText = 0.0;
     result = true;
     song.play();
 }
 function prevSong() {
-    songNumber = (songNumber - 1) % 10;
+    if (songNumber >= 1)
+        songNumber--;
     song.setAttribute("src", `All Music/${songs[songNumber]}`);
     songName.innerText = songs[songNumber];
     count.innerText = (songNumber + 1) + "/10";
-    starting.innerText = 0.0;
     result = true;
     song.play();
 }
@@ -73,18 +79,17 @@ PlayerBtn.addEventListener("click", () => {
     }
 });
 
-function changePos() {
+timeLine.onchange=function(){
     let timeChange = document.getElementById("time-line").value;
     song.pause();
     song.currentTime = (timeChange / 100) * song.duration;
-    console.log(timeChange);
     song.play();
     result = true;
+
 }
 
 setInterval(() => {
     if (result == true) {
-        console.log(timeLine.value, " : ", song.currentTime);
         timeLine.value = (song.currentTime / (song.duration)) * 100;
         starting.innerText = song.currentTime.toFixed(2);
         if (starting.innerText > 60) {
