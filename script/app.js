@@ -1,6 +1,6 @@
 let timeLine = document.getElementById("time-line");
 timeLine.value = 0;
-let songs = ["_Kabhi Jo Badal Barse_ Song Video Jackpot _ Arijit Singh _ Sachiin J Joshi_ Sunny Leone(MP3_70K).mp3",
+let songs = ["Kabhi Jo Badal Barse_ Song Video Jackpot _ Arijit Singh _ Sachiin J Joshi_ Sunny Leone(MP3_70K).mp3",
     "Aashiqui Aa Gayi (Full Video) Radhe Shyam _ Prabhas_ Pooja Hegde _ Mithoon_ Arijit Singh _ Bhushan K(MP3_70K).mp3",
     "Akhiyaan Gulaab (Song)_ Shahid Kapoor_ Kriti Sanon _ Mitraz _ Teri Baaton Mein Aisa Uljha Jiya(MP3_70K).mp3",
     "Badshah - Sajna _ Say Yes To The Dress (Official Video) _ Payal Dev -Top Wedding Song(MP3_70K).mp3",
