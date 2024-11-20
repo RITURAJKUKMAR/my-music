@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music - Player</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/icon" href="img/icon.png">
+</head>
+<body>
+    <header>
+        <h2><img src="img/icon.png" alt="icon">MY MUSIC PLAYER</h2>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class="music-name">
+                    <b id="songName">Kabhi Jo Badal Barse_ Song Video Jackpot _ Arijit Singh _ Sachiin J Joshi_ Sunny Leone(MP3)</b>
+                </div>
+                <div class="bgImg">
+                    <audio id="song" src="All Music/_Kabhi Jo Badal Barse_ Song Video Jackpot _ Arijit Singh _ Sachiin J Joshi_ Sunny Leone(MP3_70K).mp3" ></audio>
+                </div>
+                <div class="controls">
+                    <span id="starting-time"></span><input type="range" onclick="changePos();" name="time-line" id="time-line"><span id="ending-time"></span>
+                    <div class="buttons">
+                        <button id="#">🔁</button>
+                        <button id="prev-song" onclick="prevSong();">⏪</button>
+                        <button id="Player">⏯️</button>
+                        <button id="next-song" onclick="nextSong();">⏩</button>
+                        <button class="volumeoff" id="volume-off" onclick="val(false)">🔇</button>
+                        <button class="volumeon" id="volume-on" onclick="val(true);">🔊</button>
+                        <p id="count">1/10</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer><p><b>Copyright &copy 2017 My Music.com</b></p></footer>
+    <script src="script/app.js"></script>
+</body>
+</html>

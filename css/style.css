@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: lightpink;
+    height: 55px;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+footer {
+    margin-top:15px;
+    background-color: lightpink;
+    height: 55px;
+    color: black;
+    text-align: center;
+    align-content: center;
+}
+img{
+    cursor: pointer;
+}
+header h2 img {
+    width: 30px;
+}
+
+.container{
+    margin: 2px auto 0 auto;
+    border: 1px black solid;
+    border-radius: 10px;
+    width: 60%;
+    height: 600px;
+    box-shadow: 0 2px 20px;
+}
+.container .music-name{
+    border-radius: 10px 10px 0 0;
+    background-color: silver;
+    height: 9.7%;
+    text-align: center;
+    align-content: center;
+}
+.container .bgImg {
+    height: 75%;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+    background-image: url(listening-song.avif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container .controls {
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    background-color: lightpink;
+    height: 15%;
+    width: 100%;
+}
+.controls input{
+    width: 75%;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.controls span{
+    margin: 0 2px;
+}
+.buttons button{
+    transform: translateY(4);
+    margin: 2px 18px;
+    font-size: 120%;
+    cursor: pointer;
+    outline: none;
+}
+
+.volumeon{
+    display: none;
+}
+
+.show{
+    display: inline;
+}
+.hide{
+    display: none;
+}
+@media screen and (max-width: 1000px){
+    .container{
+        width: 90%;
+    }
+}
