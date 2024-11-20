@@ -31,6 +31,9 @@ function loaded() {
     starting.innerText = 0.0;
 }
 
+song.setAttribute("src", `All Music/${songs[0]}`);
+songName.innerText = songs[0];
+
 function nextSong() {
     songNumber = (songNumber + 1) % 10;
     song.setAttribute("src", `All Music/${songs[songNumber]}`);
@@ -79,7 +82,7 @@ PlayerBtn.addEventListener("click", () => {
     }
 });
 
-timeLine.onchange=function(){
+timeLine.onchange = function () {
     let timeChange = document.getElementById("time-line").value;
     song.pause();
     song.currentTime = (timeChange / 100) * song.duration;
@@ -91,7 +94,7 @@ timeLine.onchange=function(){
 setInterval(() => {
     if (result == true) {
         timeLine.value = (song.currentTime / (song.duration)) * 100;
-        starting.innerText = song.currentTime.toFixed(2);
+        starting.innerText = song.currentTime.toFixed(0);
         if (starting.innerText > 60) {
             starting.innerText = (song.currentTime / 60).toFixed(1);
         }
