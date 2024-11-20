@@ -11,15 +11,20 @@ let songs = ["Kabhi Jo Badal Barse_ Song Video Jackpot _ Arijit Singh _ Sachiin 
     "MASHOOKA (Official Video) _ Rakul Preet Singh _ Asees Kaur _ Dev Negi _ Tanishk Bagchi _ Viruss(MP3_70K).mp3",
     "Saaho_ Bad Boy Song _ Prabhas_ Jacqueline Fernandez _ Badshah_ Neeti Mohan(MP3_70K).mp3",
 ]
+
+let songList = document.querySelector(".songList");
 let song = document.getElementById("song");
 let songName = document.getElementById("songName");
+let repeatBtn = document.getElementById("repeat-song");
 let PlayerBtn = document.getElementById("Player");
 let starting = document.getElementById("starting-time");
 let ending = document.getElementById("ending-time");
 let off = document.getElementById("volume-off");
 let on = document.getElementById("volume-on");
 let count = document.getElementById("count");
+let PlayList = false;
 let songNumber = -1;
+let repeat = false;
 let result = false;
 starting.innerText = 0.0;
 
@@ -31,20 +36,55 @@ function loaded() {
     starting.innerText = 0.0;
 }
 
+
+songs.forEach((currSong) =>{
+    let p = document.createElement("p");
+    let br = document.createElement("br");
+    p.innerText=currSong;
+    songList.appendChild(p);
+    songList.appendChild(br);
+    songList.appendChild(br);
+});
+
+function openPlayList() {
+    if (PlayList == false) {
+        PlayList = true;
+        songList.classList.remove("hide");
+        songList.classList.add("show");
+    }
+    else {
+        PlayList = false;
+        songList.classList.remove("show");
+        songList.classList.add("hide");
+    }
+}
+
 song.setAttribute("src", `All Music/${songs[0]}`);
 songName.innerText = songs[0];
 
-function nextSong() {
-    songNumber = (songNumber + 1) % 10;
+function repeatSong() {
+    if (repeat == false) {
+        repeatBtn.style.backgroundColor = "green";
+        repeat = true;
+    }
+    else {
+        repeatBtn.style.backgroundColor = "red";
+        repeat = false;
+    }
+}
+
+function prevSong() {
+    if (songNumber >= 1)
+        songNumber--;
     song.setAttribute("src", `All Music/${songs[songNumber]}`);
     songName.innerText = songs[songNumber];
     count.innerText = (songNumber + 1) + "/10";
     result = true;
     song.play();
 }
-function prevSong() {
-    if (songNumber >= 1)
-        songNumber--;
+
+function nextSong() {
+    songNumber = (songNumber + 1) % 10;
     song.setAttribute("src", `All Music/${songs[songNumber]}`);
     songName.innerText = songs[songNumber];
     count.innerText = (songNumber + 1) + "/10";
@@ -99,7 +139,10 @@ setInterval(() => {
             starting.innerText = (song.currentTime / 60).toFixed(1);
         }
         if (timeLine.value == 100) {
-            nextSong();
+            if (repeat == true)
+                song.play();
+            else
+                nextSong();
             console.log("pause");
         }
     }
